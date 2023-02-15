@@ -1,0 +1,207 @@
+<html>
+<head>
+    <title>
+        Form
+    </title>
+    <meta name="viewport"
+          content=
+                  "width=device-width, initial-scale=1.0"/>
+    <link href=
+                  "https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet"/>
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet"
+          href=
+                  "https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>
+    <script type="text/javascript"
+            src=
+                    "https://code.jquery.com/jquery-2.1.1.min.js">
+    </script>
+    <script src=
+                    "https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+
+    <!DOCTYPE html>
+    <style type="text/css">
+        .maincontainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f5f6fa;
+
+        }
+
+        .root {
+            width: 500px;
+            background: #fff;
+            padding: 10px;
+            margin: 50px;
+
+        }
+
+        .heading {
+            color: black;
+            font-size: 32px;
+            align-items: center;
+            font-weight: bold;
+            display: flex;
+            justify-content:center;
+            padding: 5px;
+        }
+
+
+
+
+    </style>
+
+    <script>
+        $(document).ready(function () {
+            $("select").material_select();
+        });
+
+
+         $(document).ready(function(){
+    $('.timepicker').timepicker();
+  });
+
+        $(document).ready(function(){
+    $('.datepicker').datepicker();
+  });
+
+    </script>
+    <script>
+        function check()
+        { if(userpassword.value==userconfirmpassword.value)
+            {img.src="/static/tick.jpg"
+            }
+          else
+          {
+          img.src="/static/wr.png"
+          }
+        }
+
+    </script>
+
+
+    <script src="/static/check.js"></script>
+</head>
+<body>
+<form action="/userregistrationsubmit" method="post">{% csrf_token %}
+    <div class="maincontainer">
+        <div class="root">
+            <div class="heading">Create Account</div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input id="username" name="username" type="text" class="validate">
+                    <label for="username">Enter Your Name</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <div class="input-field">
+                        <i class="material-icons prefix">business</i>
+                        <select name="sourcestate" id="sourcestate">
+                            <option value="" disabled selected>Choose your State</option>
+
+                        </select>
+                        <label>Source State</label>
+                    </div>
+                </div>
+            </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <div class="input-field">
+                            <i class="material-icons prefix">gradient</i>
+                            <select name="sourcecity" id="sourcecity">
+                                <option value="" disabled selected>Choose your City</option>
+
+                            </select>
+                            <label>Source City</label>
+                        </div>
+                    </div>
+                </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">mail</i>
+                            <input id="useremail" name="useremail" type="email" class="validate" required>
+                            <label for="useremail">Email Address</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">date_range</i>
+                            <input id="userdob" name="userdob" type="date">
+                            <label for="userdob">Date Of Birth</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">access_time</i>
+                            <input id="tor" name="tor" type="text" class="timepicker">
+                            <label for="tor">Time Of Registration</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">call</i>
+                            <input id="usernum" name="usernum" type="text" class="validate" required>
+                            <label for="usernum">Mobile Number</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">more_horiz</i>
+                            <input id="userpassword" name="userpassword" type="password" class="validate"  required>
+                            <label for="userpassword">Enter Your password</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s11">
+                            <i class="material-icons prefix">more_horiz</i>
+                            <input id="userconfirmpassword" name="userpassword" type="password" class="validate"
+                                   onkeyup="check()">
+                            <label for="userconfirmpassword">Confirm Your password</label>
+                        </div>
+                        <span class="col s1"><img id="img" width="25px" style="margin-top: 158%;"></span>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s6" style="display:flex;justify-content:center;align-item:center;">
+                            <button class="btn waves-effect blue accent-3 waves-light" type="submit" id="btn">
+                                Submit
+                                <i class="material-icons right">check</i>
+                            </button>
+                        </div>
+                        <div class="input-field col s6" style="display:flex;justify-content:center;align-item:center;">
+                            <button class="btn waves-effect pink  waves-light" type="reset">Clear
+                                <i class="material-icons right">clear_all</i>
+                            </button>
+                        </div>
+
+                    </div>
+                    <div class="row" style="margin-top: 10px">
+                        <div style="color: #70a1ff; font-size: 15px;display:flex;justify-content:center"
+                             class="col s12">
+                            {{ msg }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+</form>
+
+
+
+
+</body>
+            <!--JavaScript at end of body for optimized loading-->
+            <script src=
+                            "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js">
+            </script>
+
+</html>

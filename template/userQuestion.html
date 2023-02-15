@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<style type="text/css" xmlns="http://www.w3.org/1999/html">
+    .dig
+    {
+    width:30%;
+    height:auto;
+    background:white;
+
+    border-radius:10px;
+    align-items:center;
+    justify-content:center;
+
+
+    }
+    .dig2
+    {
+    width:100%;
+    height:auto;
+    background:rgb(17, 194, 214);
+    padding:20px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+
+    }
+    .root
+    {
+    background:#f5f6fa;
+    width:100%;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    }
+
+    .root1
+    {
+    background:#b5e4f8;
+    width:90%;
+    height:auto;
+    }
+    .head{
+    font-size:24px;
+    font-weight: bold;
+    letter-spacing:2px;
+    color:black;
+    dispaly:flex;
+    text-align: center;
+    justify-content:center;
+    }
+    .blocks{
+        margin-left:12px;
+        width:14mm;
+        height:10mm;
+         margin-right: 7px;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+          border-radius: 5px;
+          font-size: 10px;
+          text-align: center;
+        }
+    .block-color{
+        background-color: white;
+    }
+    .block-onclick-color{
+        background-color: rgb(17, 163, 236);
+        color:white
+    }
+
+
+
+</style>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script src="/static/questions.js"></script>
+</head>
+<body>
+<input type="hidden" id="spl" value="{{spl.specializationid}}" name="spl">{% csrf_token %}
+<input type="hidden" value="{{spl.specialization}}" id="splname" name="splname">
+<div class="root">
+    <div class="dig">
+
+        <div class="row dig2">
+            <div style="color: white;font-size:18px;font-weight: 500;" id="heading"></div>
+        </div>
+
+
+        <div class="row">
+            <div id="questiondiv" class="col s11" style="margin-left:6px;font-size:15px;font-weight:600;"></div>
+        </div>
+
+        <div class="row root1" style="border-radius:5px">
+            <div class="row" style="margin-left:6px;" id="subquestiondiv" ></div>
+        </div>
+
+        <div id="currentscore" style="font-size:12px;font-weight:600;margin-left:20px;margin-bottom:20px;"></div>
+
+        <div class="row" style="display: flex;justify-content: center;align-items: center;">
+            <div class="" id="btnprev"></div>
+
+            <div class="col s12" id="btnnext1" style="padding:5px;">
+                <button style="width:100%;border-radius:20px;background:rgb(17, 194, 214);" id="btnnext"
+                        class="waves-effect wave-light btn" type="button" name="action">Next
+                    <i class="material-icons right">send</i>
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+
+</body>
+</html>

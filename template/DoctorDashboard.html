@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <title>Dashboard</title>
+</head>
+<body>
+
+ <nav style="background-color:rgb(17, 194, 214)">
+    <div class="nav-wrapper">
+      <a href="#!" class="brand-logo" style="display: flex;justify-content: center">
+          <img src="/static/{{ picture }}" class="circle responsive-img" style="width:50px;height:44px;margin-left: 31px;margin-top: 8px;" alt="Black and White Portrait of a Man" loading="lazy"/>
+       <span style="font-weight: 600;font-size: 20px;margin-left: 12px;">Dr.&nbsp;{{ doctorname }}</span>
+      </a>
+      <ul class="right hide-on-med-and-down">
+        <li><a class="waves-effect waves-light btn" href="/patient" target="nw" style="background-color:rgb(46, 229, 249);">Patient</a></li>
+        <li><a class="waves-effect waves-light btn" href="/doctorlogout"  style="background-color:rgb(46, 229, 249);">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+<iframe frameborder="0" style="width: 100vw; height: 91vh" name="nw"></iframe>
+
+
+
+</body>
+<!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+</html>

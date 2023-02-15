@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<style type="text/css" xmlns="http://www.w3.org/1999/html">
+    .dig
+    {
+    width:30%;
+    height:auto;
+    background:white;
+    border-radius:10px;
+    align-items:center;
+    justify-content:center;
+    }
+    .dig2
+    {
+    width:100%;
+    height:auto;
+    background:rgb(17, 194, 214);
+    padding:5px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    }
+    .row{
+         margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    }
+    .root
+    {
+    background:#f5f6fa;
+    width:100%;
+    height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    }
+    
+
+
+</style>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+<body>
+<form action="/userquestioninterface" id="form" method="post">{% csrf_token %}
+<input type="hidden" id="splid" name="splid" value="{{specializationid}}">
+<div class="root">
+    <div class="dig">
+        <div class="row dig2">
+            <div style="margin-top: 30px;font-size: 10px; color: white;"></div>
+            <div style="color: white;font-size:18px;font-weight: 500;margin-left:10px;margin-bottom:5px">MedAsist&nbsp;{{ splname }}&nbsp;Survey
+            </div>
+
+        </div>
+
+
+        <div style="background-color: #b5e4f8; width:90%;height:250px; margin-top:20px;margin-left: 23px ;border-color: black;border-radius:5px ">
+            <div class="row" style="padding:15px;display:flex;justify-content:center;flex-direction:column">
+                <div style="font-size:24px;color:#037aad;;font-weight:500"> Instructions</div>
+                <div style="font-size:11px;margin-top:10px">In Section A,B,...., questions will be asked about your
+                    Medical Issue. Please mark each response with an X.
+                </div>
+                <div style="font-size:11px;margin-top:10px">If you are unsure about how to answer a question, please
+                    give the best answer you can
+                </div>
+            </div>
+            <div style="display:flex;justify-content:center;align-item:center;">
+                <button class="btn waves-effect waves-light"  value="start" type="submit" name="action" style="border-radius: 20px; background-color:rgb(17, 194, 214) ; width:80%;display: flex;justify-content: center;align-items: center;font-size: 15px;">
+                    Start MedAsist Survey
+                </button>
+            </div>
+
+        </div>
+
+        <div style="background-color: #b5e4f8; width:90%;height:auto; margin-top:20px;margin-left: 23px ;border-color: black;border-radius:5px;margin-top: 60px;">
+            <div class="row">
+                <div id="prescription">
+
+                </div>
+
+            </div>
+        </div>
+
+
+        <div style="margin-top:63px">
+            <div style="font-weight:600;margin-left:15px;margin-left: 28px;margin-bottom: -15px;color:#037aad">Your Doctor</div>
+        </div>
+
+            <div class="card-panel" style="background-color: #c3edf9; width:90%;height:100px; margin-top:20px;margin-left: 23px ;border-color: black; ">
+                <div class="row">
+                    <div class="col s4" style="margin-top: -9px;">
+                        <img src="/static/{{icon}}" class="circle responsive-img" style="width: 81%;height: 70px;">
+                    </div>
+                    <div class="col s6">
+                        <div style="font-weight:600;color:rgb(7, 138, 152);">Dr.{{ doctorname }}</div>
+                        <div>
+                            <button class="btn waves-effect waves-light"
+                                    style="border-radius: 20px; background-color:rgb(17, 194, 214) ; height:18px;width: 120px;font-size: 10px;display: flex;align-items: center;"
+                                   value="change" type="submit" name="btn">Change Doctor
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    </div>
+</div>
+
+
+</form>
+</body>
+<script>
+    $(document).ready(function(){
+        $.getJSON('/usercheckprescription',function(data){
+            var htm=""
+            if(data.result){
+               htm+=`<div style="display:flex;justify-content:center;align-item:center;padding-top: 20px;padding-bottom: 20px;">
+                <button class="btn waves-effect waves-light" id="pres" type="submit" name="action" style="border-radius: 20px; background-color:rgb(17, 194, 214) ; width:80%;display: flex;justify-content: center;align-items: center;font-size: 15px;">
+                    Your Prescription
+                </button>
+            </div>`
+            $('#prescription').html(htm)
+            }
+            else{
+             htm+=`<div style="display:flex;justify-content:center;align-item:center;padding-top: 20px;padding-bottom: 20px;">
+                Prescription Not Found
+            </div>`
+            $('#prescription').html(htm)
+            }
+        })
+
+        $(document).click(function(event){
+            id=event.target.id
+            if(id.slice(0,4)=='pres'){
+            $('#form').attr('action','/userprescription')
+            $('#form').attr('target','_blank');
+            $('#form').submit()
+            }
+        })
+
+    })
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js">
+</script>
+
+</html>
+

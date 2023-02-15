@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<style type="text/css">
+    .dig
+    {
+    width:35%;
+    height:auto;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    align-items:center;
+    justify-content:center;
+
+
+    }
+    .root
+    {
+    background:#f5f6fa;
+    width:100%;
+    height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    }
+    .head{
+    font-size:22px;
+    font-weight:bolder;
+    letter-spacing:2px;
+    color:black;
+    }
+    .texts{
+        padding-left:5px;
+        font-size:12px;
+        font-weight:600;
+        color:rgb(136, 135, 135);
+
+
+    }
+</style>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript">
+$(document).ready(function(){
+$("#1").keyup(function(){
+    var text_lenght = $('#1').val().length;
+    if (text_lenght == 1){
+        $('#2').focus();
+    }
+});
+
+$("#2").keyup(function(){
+    var text_lenght = $('#2').val().length;
+    if (text_lenght == 1) {
+        $('#3').focus();
+    }
+});
+
+$("#3").keyup(function(){
+    var text_lenght = $('#3').val().length;
+    if (text_lenght == 1) {
+        $('#4').focus();
+    }
+});
+
+});
+</script>
+</head>
+<body>
+<form action="/checkotp" method="post">{% csrf_token %}
+    <input type="hidden" value="{{ otp }}" name="gotp" >
+    <div class="root">
+        <div class="dig" >
+            <div class="head" >
+                <div style="padding-left:5px;padding-top:20px;letter-spacing:0.5px;">Verify OTP</div>
+
+            </div>
+            <div class="texts">We have sent you an OTP on your registered number kindely enter below to get verify.</div>
+
+            <div class="row" style="margin-top: 10px;">
+                <div class="col s3">
+                    <div class="input-field">
+                        <input width="10px" style="text-align: center;" id="1" name="digit1"  maxlength="1" type="password" class="validate">
+
+                    </div>
+                </div>
+
+                <div class="col s3">
+                    <div class="input-field">
+                        <input width="10px" style="text-align: center;" id="2" name="digit2"  maxlength="1" type="password" class="validate">
+
+                    </div>
+                </div>
+
+                <div class="col s3">
+                    <div class="input-field">
+                        <input width="10px" style="text-align: center;" id="3" name="digit3"  maxlength="1" type="password" class="validate">
+
+                    </div>
+                </div>
+
+                <div class="col s3">
+                    <div class="input-field">
+                        <input width="10px" style="text-align: center;" id="4" name="digit4"  maxlength="1" type="password" class="validate">
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col s12 ">
+                    <button style="width:100%;border-radius:20px" class="btnverify waves-effect waves-light btn" type="submit" name="action">Login
+                      </button>
+                </div>
+                <span style="margin-left: 147px;" class="texts">Don't recived OTP yet?</span><span class="texts" style="color:rgb(10, 138, 223);" >Resend OTP</span>
+            </div>
+
+            <div class="row">
+                <div class="col s12">
+                 <div style="color: #70a1ff; font-size: 15px;display:flex;justify-content:center;align-item:center;color:">{{ msg }}</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</form>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js">
+     </script>
+</body>
+</html>

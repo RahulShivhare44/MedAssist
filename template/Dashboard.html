@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Font Awesome -->
+    <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+            rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+            rel="stylesheet"
+    />
+    <!-- MDB -->
+    <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.11.0/mdb.min.css"
+            rel="stylesheet"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <title>Dashboard</title>
+</head>
+
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <!-- Container wrapper -->
+    <div class="container-fluid">
+        <!-- Toggle button -->
+
+        <!-- Collapsible wrapper -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- Navbar brand -->
+            <a class="navbar-brand mt-2 mt-lg-0" href="#">
+                <span><img src="/static/logo1.png" width="40"></span>
+                <span style="padding-left: 10px">MedAssist</span>
+            </a>
+            <!-- Left links -->
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                 <li class="nav-item" style="padding-left:10px;">
+                    <a class="btn btn-primary shadow-0" role="button" href="/home" target="_self" style="background-color:rgba(251,251,251,var(--mdb-bg-opacity))!important;color:black;">Home</a>
+                </li>
+                <li class="nav-item">
+                    <div class="btn-group shadow-0">
+                    <a class="btn btn-primary dropdown-toggle shadow-0" href="#" role="button" id="specialization" data-mdb-toggle="dropdown" style="background-color:rgba(251,251,251,var(--mdb-bg-opacity))!important;color:black;" aria-expanded="false">Specialization</a>
+                    <ul class="dropdown-menu" aria-labelledby="specialization">
+                        <li><a class="dropdown-item" target="mw" href="/specialization">Specialization</a></li>
+                        <li><a class="dropdown-item" target="mw" href="/specializationdisplayall">DisplayAllSpecialization</a>
+                        </li>
+                    </ul>
+                </div>
+                </li>
+                <li class="nav-item" style="padding-left:10px;">
+                    <div class="btn-group shadow-0">
+                    <a class="btn btn-primary dropdown-toggle shadow-0" href="#" role="button" id="doctors" style="background-color:rgba(251,251,251,var(--mdb-bg-opacity))!important;color:black;" data-mdb-toggle="dropdown" aria-expanded="false">Doctors</a>
+                    <ul class="dropdown-menu" aria-labelledby="docotrs">
+                        <li><a class="dropdown-item" target="mw" href="/registration">Doctors</a></li>
+                        <li><a class="dropdown-item" target="mw" href="/registrationdisplayall">DisplayAllRegistration</a></li>
+                    </ul>
+                    </div>
+                </li>
+
+                <li class="nav-item" style="padding-left:10px;">
+                    <a class="btn btn-primary shadow-0" role="button" target="mw" href="/questioninterface" style="background-color:rgba(251,251,251,var(--mdb-bg-opacity))!important;color:black;">Question</a>
+                </li>
+                <li class="nav-item" style="padding-left:10px;">
+                    <a class="btn btn-primary shadow-0" role="button" target="mw" href="/subquestioninterface" style="background-color:rgba(251,251,251,var(--mdb-bg-opacity))!important;color:black;">Sub-Question</a>
+                </li>
+                <li class="nav-item" style="padding-left:10px;">
+                    <a class="btn btn-primary shadow-0" role="button" target="mw" href="/userregistrationdisplayall" style="background-color:rgba(251,251,251,var(--mdb-bg-opacity))!important;color:black;">User Details</a>
+                </li>
+                <li class="nav-item" style="padding-left:10px;">
+                    <a class="btn btn-primary shadow-0" role="button" href="/adminlogout" target="_self" style="background-color:rgba(251,251,251,var(--mdb-bg-opacity))!important;color:black;">Logout</a>
+                </li>
+            </ul>
+            <!-- Left links -->
+        </div>
+        <!-- Collapsible wrapper -->
+
+        <!-- Right elements -->
+        <div class="d-flex align-items-center">
+            <!-- Icon -->
+            <span style="font-weight: bold;margin-right:20px;">{{ data.adminname }}</span>
+
+
+            <!-- Avatar -->
+            <div class="dropdown">
+                <a
+                        class="dropdown-toggle d-flex align-items-center hidden-arrow"
+                        href="#"
+                        id="navbarDropdownMenuAvatar"
+                        role="button"
+                        data-mdb-toggle="dropdown"
+                        aria-expanded="false"
+                >
+                    <img
+                            src="/static/{{ data.picture }}"
+                            class="rounded-circle"
+                            height="25"
+                            alt="Black and White Portrait of a Man"
+                            loading="lazy"
+                    />
+                </a>
+
+            </div>
+        </div>
+        <!-- Right elements -->
+    </div>
+    <!-- Container wrapper -->
+</nav>
+<!-- Navbar -->
+
+
+<iframe src="" frameborder="0" style="width: 100vw; height: 91vh" name="mw"></iframe>
+
+
+</body>
+<script
+        type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.11.0/mdb.min.js"
+></script>
+</html>

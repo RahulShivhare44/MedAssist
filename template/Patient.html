@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<style type="text/css" xmlns="http://www.w3.org/1999/html">
+    body{
+    background:#f5f6fa;
+    }
+    .dig
+    {
+    width:30%;
+    height:auto;
+    background:white;
+    border-radius:10px;
+    align-items:center;
+    justify-content:center;
+
+    }
+    .root
+    {
+
+    width:100%;
+    height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    }
+    .head{
+    font-size:24px;
+    font-weight: bold;
+    letter-spacing:2px;
+    color:black;
+    dispaly:flex;
+    text-align: center;
+    justify-content:center;
+    }
+    .dig2
+    {
+    width:100%;
+    height:auto;
+    background:rgb(17, 194, 214);
+    padding:20px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    }
+
+</style>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+<body>
+
+<form action="/patientreport" method="post">{% csrf_token %}
+<input type="hidden" id="userdoctorid" name="userdoctorid" value="">
+
+    <div class="root">
+        <div class="dig" >
+            <div class="dig2" >
+                <div style= "color: white;font-size:18px;font-weight: 500;">Hy Dr. {{doctorname}} , here are Some Patient Waiting for you</div>
+            </div >
+
+         <div class="row" style="display: flex;" >
+            <i class="material-icons" style="margin-top:20px;margin-left:33px;font-size: 24px">description</i>
+            <span style="margin-top:20px;margin-left:5px; color: rgb(17, 194, 214);font-weight: 700;font-size: 17px;"> Patients</span>
+            </div>
+
+            {% for row in result %}
+            <div doctorid={{row.userdoctorid}} class="card-panel" style="background: #c3edf9; width:87%;height:100px; margin-top:20px;margin-left: 30px; ">
+                    <div class="row" >
+                        <div class="col s4" style="margin-top: -9px;">
+                        <img src="/static/patient.jpg" style="width: 81%;height: 70px;" class="circle responsive-img">
+                        </div>
+                        <div class="col s6">
+                            <div style="font-weight:600;color:rgb(7, 138, 152);">{{row.username}}</div>
+                            <div style="font-size:12px;">{{ row.currentdate }}</div>
+                            <div style="font-size:12px;"></div>
+                        </div>
+                    </div>
+            </div>
+            {% endfor %}
+
+            <div>
+                <button class="btn waves-effect waves-light" style="margin-left: 47px;border-radius: 20px; background-color:rgb(17, 194, 214);width:80%;margin-top:40px;margin-bottom: 10px;" type="submit" name="action">View Patient Report
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js">
+
+     </script>
+    <script>
+    $('.card-panel').click(function(){
+        $('.card-panel').each(function(){
+            $(this).removeClass('z-depth-3')
+        })
+        $(this).addClass('z-depth-3')
+        $('#userdoctorid').val($(this).attr('doctorid'))
+
+    })
+    </script>
+</form>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<style type="text/css" xmlns="http://www.w3.org/1999/html">
+    .maincontainer {
+        display: flex;
+        justify-content: center;
+        height: 100%;
+        align-items: center;
+        background: #f5f6fa;
+
+    }
+
+    .root {
+        width: 1400px;
+        background: #7f8fa6;
+        padding: 10px;
+        margin: 50px;
+
+    }
+
+    .heading {
+        color: white;
+        font-size: 32px;
+        align-items: center;
+        font-weight: normal;
+        display: flex;
+        padding: 5px;
+    }
+
+    .rowgap {
+        margin-top: 40px;
+    }
+
+    .tbtexthead {
+        color: white;
+        font-weight: normal;
+        font-size: 18px;
+    }
+    .tbtext {
+        color: #FFFFFF;
+        font-size: 16px;
+        font-weight: normal;
+        align-items: center;
+    }
+
+</style>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Account Detail Page</title>
+
+    <link
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+            rel="stylesheet"
+    />
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+
+    <script type="text/javascript"
+            src="https://code.jquery.com/jquery-2.1.1.min.js">
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+<body>
+<div class="maincontainer">
+    <div class="root">
+        <div class="heading">
+            List Of User Account Details
+        </div>
+        <table class="table align-middle">
+            <thead class="tbtexthead">
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Country</th>
+                <th scope="col">State</th>
+                <th scope="col">City</th>
+                <th scope="col">Email Address</th>
+                <th scope="col">DOB</th>
+                <th scope="col">Time Of Registration</th>
+                <th scope="col">Mobile No.</th>
+                <th scope="col">Password</th>
+            </tr>
+            </thead>
+            <tbody class="tbtext">
+            {% for row in result %}
+                <tr>
+                    <td scope="row">{{ row.username }}</td>
+                    <td>{{ row.usercountry }}</td>
+                    <td>{{ row.userstate }}</td>
+                    <td>{{ row.usercity }}</td>
+                    <td>{{ row.useremail }}</td>
+                    <td>{{ row.userdob }}</td>
+                    <td>{{ row.tor }}</td>
+                    <td>{{ row.usernum }}</td>
+                    <td>{{ row.userpassword }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

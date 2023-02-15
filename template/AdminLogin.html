@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<style type="text/css">
+
+    .root{
+        width:100vw;
+        height:100vh;
+        background:#f5f6fa;
+        justify-content: center;
+        display:flex;
+        align-items: center;
+   }
+    .subdiv{
+        margin-top: 25px;
+        width:100vw;
+        height: auto;
+
+    }
+</style>
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+  <!-- Font Awesome -->
+    <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+            rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+            rel="stylesheet"
+    />
+    <!-- MDB -->
+    <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.11.0/mdb.min.css"
+            rel="stylesheet"
+    />
+
+    <script
+            type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.11.0/mdb.min.js"
+    ></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+
+    <title>Admin Login</title>
+</head>
+<body>
+<div class="root">
+<div class="subdiv">
+
+
+  <div class="container-fluid h-custom">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-9 col-lg-6 col-xl-5">
+        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+          class="img-fluid" alt="Sample image">
+      </div>
+      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+        <form action="/dashboard" method="post"> {% csrf_token %}
+          <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-center">
+            <img src="/static/admin.png" width="100px">
+          </div>
+            <div style="display:flex;justify-content:center;padding:20px;font-size:22px;font-weight: bold;letter-spacing: 2px;">Administrator Login</div>
+
+          <!-- Email input -->
+          <div class="form-outline mb-4">
+            <input type="email" id="email" name="email" class="form-control form-control-lg"
+              placeholder="Enter a valid email address" />
+            <label class="form-label" for="email">Email address</label>
+          </div>
+
+          <!-- Password input -->
+          <div class="form-outline mb-3">
+            <input type="password" id="password" name="password" class="form-control form-control-lg"
+              placeholder="Enter password" />
+            <label class="form-label" for="password">Password</label>
+          </div>
+
+
+
+
+          <div class="text-center text-lg-start mt-4 pt-2">
+            <button type="submit" class="btn btn-primary btn-lg"
+              style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+  </div>
+</div>
+</body>
+
+    <script
+            type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.11.0/mdb.min.js"
+    ></script>
+
+</html>

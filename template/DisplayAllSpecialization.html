@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<style type="text/css">
+     .droot{
+        width:100%;
+        background:#f5f6fa;
+        justify-content: center;
+        display:flex;
+        align-items: center
+   }
+    .dsubdiv{
+
+        width:700px;
+        height: auto;
+        background: #7f8fa6;
+        padding: 15px;
+        border-radius: 10px;
+
+    }
+    .head{
+        font-size: 32px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        color:#FFF;
+        display: flex;
+        align-items: center;
+        padding: 5px;
+
+   }
+
+
+
+    .root{
+        width:100%;
+        height:100vh;
+        background:#f5f6fa;
+        justify-content: center;
+        display:flex;
+        align-items: center
+   }
+    .subdiv{
+
+        width:1100px;
+        height: auto;
+        background: #7f8fa6;
+        padding: 15px;
+        border-radius: 10px;
+
+    }
+    .dhead{
+        font-size: 24px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        color:#000;
+        display: flex;
+        align-items: center;
+
+   }
+   .tbtexthead{
+       color: #FFFFFF;
+       font-weight: bolder;
+       font-size: 24px;
+   }
+ .tbtext{
+       color: #FFFFFF;
+       font-weight: bold;
+       font-size: 18px;
+      }
+
+
+
+
+
+
+</style>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Specialization</title>
+
+   <!-- Font Awesome -->
+    <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+            rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+            rel="stylesheet"
+    />
+    <!-- MDB -->
+    <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.11.0/mdb.min.css"
+            rel="stylesheet"
+    />
+
+    <script
+            type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.11.0/mdb.min.js"
+    ></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+
+    <title>MedAsist</title>
+
+</head>
+
+
+<body>
+<div class="root">
+    <div class="subdiv">
+        <div class="head">
+            List Specialization
+        </div>
+        <table class="table align-middle">
+            <thead class="tbtexthead">
+            <tr>
+
+                <th scope="col">ID</th>
+                <th scope="col">Category</th>
+                <th scope="col">Icon</th>
+                <th scope="col">Update</th>
+            </tr>
+            </thead>
+            <tbody class="tbtext">
+
+            {% for row in result %}
+            <tr>
+                <th scope="row">{{row.specializationid}}</th>
+                <td>{{ row.specialization }}</td>
+                <td>
+                    <button type="button" specializationid={{ row.specializationid }} iconspl={{ row.icon }}
+                            class="btnicon btn-light btn-sm px-3" data-mdb-toggle="modal" data-mdb-target="#iconModal">
+                        <img
+                                src="/static/{{ row.icon }}"
+                                class="img-fluid rounded"
+                                style="width: 40px"
+                        />
+                    </button>
+                </td>
+
+                <td>
+                    <button type="button" specializationid={{ row.specializationid }} specialization={{ row.specialization }} class="btnedit btn-light btn-sm px-3" data-mdb-toggle="modal"
+                            data-mdb-target="#exampleModal">
+                        <i class="fas fa-edit"></i>
+                    </button>
+
+
+                </td>
+            </tr>
+            {% endfor %}
+
+
+            </tbody>
+        </table>
+
+
+    </div>
+</div>
+<!-- Dialog-->
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title dhead" id="exampleModalLabel">
+                    <span><img src="/static/logo1.png" width="60"></span>
+                    <span style="padding-left: 10px">Specialization Register</span>
+                </div>
+                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+
+                <div class="droot">
+                    <div class="dsubdiv">
+
+
+                        <div class="row" style="margin-top: 4px">
+                            <div class="col-12">
+
+                                <div class="form-outline form-white">
+                                    <input type="text" name="specializationid" id="splid"
+                                           class="form-control form-control-lg" disabled/>
+                                    <label class="form-label" for="spl">Specialization Id</label>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row" style="margin-top: 10px">
+                            <div class="col-12">
+
+                                <div class="form-outline form-white">
+                                    <input type="text" name="specialization" id="spl"
+                                           class="form-control form-control-lg"/>
+                                    <label class="form-label" for="spl">Category Specialization</label>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row" style="margin-top: 10px">
+                            <div class="col-6">
+                                <button type="button" style="width:100%" class="updbtn btn-light btn-lg"
+                                        data-mdb-ripple-color="dark">Update Category
+                                </button>
+                            </div>
+                            <div class="col-6">
+                                <button type="button" style="width:100%" class="delbtn btn-light btn-lg"
+                                        data-mdb-ripple-color="dark">Delete Category
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="row" style="margin-top: 4px">
+                            <div style="text-align: center;color: #FFF;font-size: 24px" id="msg" class="col-12">
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="iconModal" tabindex="-1" aria-labelledby="iconModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title dhead" id="iconModalLabel">
+                    <span><img src="/static/logo1.png" width="60"></span>
+                    <span style="padding-left: 10px">Specialization Register</span>
+                </div>
+                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+
+                <div class="droot">
+                    <div class="dsubdiv">
+
+                        <div class="row" style="margin-top: 4px">
+                            <div class="col-12">
+
+                                <div class="form-outline form-white">
+                                    <input type="text" name="specializationid" id="idspl"  disabled class="form-control form-control-lg" />
+                                    <label class="form-label" for="spl">Specialization Id</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" style="margin-top: 10px">
+                            <div class="col-6">
+                                <img
+                                        id="splicon"
+                                        class="rounded-3"
+                                        style="width: 200px;"
+                                        alt="Avatar"
+                                />
+                            </div>
+                            <div class="col-6" style="display:flex; justify-content:center; align-item:center;">
+                                <img
+                                        src="/static/edit.jpg"
+                                        id="editicon"
+                                        class="rounded-3"
+                                        style="width: 150px;"
+                                        alt="Avatar"
+                                />
+                            </div>
+
+                        </div>
+
+                        <div class="row" style="margin-top: 10px">
+                            <div class="col-12">
+                                <input name="icon" class="form-control form-white form-control-lg" id="icon"
+                                       type="file"/>
+                            </div>
+                        </div>
+
+                        <div class="row" style="margin-top: 10px">
+                            <div class="col-12">
+                                <button type="button" style="width:100%" class="updiconbtn btn-light btn-lg"
+                                        data-mdb-ripple-color="dark">Update Icon
+                                </button>
+                            </div>
+                        </div>
+
+                         <div class="row" style="margin-top: 4px">
+                            <div style="text-align: center;color: #FFF;font-size: 24px" id="iconmsg" class="col-12">
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script>
+$('.btnedit').click(function(){
+
+
+$('#exampleModal').modal('show');
+$('#spl').val($(this).attr('specialization'))
+$('#splid').val($(this).attr('specializationid'))
+})
+
+$('.updbtn').click(function () {
+ $.getJSON('/updatespecialization',{'specializationid':$('#splid').val(),'specialization':$('#spl').val()},function(data)
+ {
+   if(data.result)
+    { $('#msg').html("Record Updated Successfully")
+    }
+    else
+    { $('#msg').html("Fail to Update Record... ")
+    }
+
+ })
+
+})
+
+$('.delbtn').click(function () {
+ $.getJSON('/deletespecialization',{'specializationid':$('#splid').val()},function(data)
+ {
+   if(data.result)
+    { $('#msg').html("Record Delete Successfully")
+    }
+    else
+    { $('#msg').html("Fail to Delete Record... ")
+    }
+
+ })
+
+})
+
+$('.btn-close').click(function(){
+
+    location.href="http://localhost:8000/specializationdisplayall/"
+
+})
+
+$('.btnicon').click(function(){
+    $('#exampleModal').modal('hide');
+    $('#iconModal').modal('show');
+    $('#idspl').val($(this).attr('specializationid'))
+    $('#splicon').attr('src','/static/'+$(this).attr('iconspl'))
+
+
+})
+
+$('#icon').change(function(event){
+    $('#editicon').attr('src',URL.createObjectURL(event.target.files[0]))
+
+})
+
+$('.updiconbtn').click(function (e) {
+
+        var formData = new FormData();
+        formData.append("specializationid",$('#idspl').val())
+        var files = $('#icon')[0].files;
+
+        // Check file selected or not
+        if(files.length > 0 ){
+           formData.append('icon',files[0]);
+
+           $.ajax({
+              url: '/editspecializationpicture',
+              type: 'post',
+              headers:{
+        "X-CSRFToken": '{{ csrf_token }}'
+         },
+              data: formData,
+              contentType: false,
+              processData: false,
+              success: function(response){
+                 if(response != 0){
+                      if (response.result) {
+                $('#iconmsg').html("ICON Updated Successfully")
+            } else {
+                $('#iconmsg').html("Fail to Update ICON...")
+            }
+
+                       }else{
+                    alert('file not uploaded');
+                 }
+              },
+           });
+        }else{
+           alert("Please select a file.");
+        }
+
+
+  })
+
+
+
+
+</script>
+
+
+</body>
+
+
+<!-- MDB -->
+<script
+        type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.js"
+></script>
+
+
+</html>
+
+
+
+
+
+
+

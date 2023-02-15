@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<style type="text/css">
+    body{
+    background-color:#f5f6fa;
+    }
+
+    .root{
+        width:100%;
+        height:100vh;
+        justify-content: center;
+        display:flex;
+        align-items: center;
+
+   }
+    .subdiv{
+        width:900px;
+        height: auto;
+        padding: 15px;
+        border-radius: 10px;
+        background:white;
+
+    }
+
+</style>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Preview of UserPrescription</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</head>
+
+<body>
+
+<div class="root">
+    <div class="subdiv">
+        <div class="head">
+            <div class="card-panel shadow-0" style="background-color: #8fd8ed; width:95%;height:100px; margin-top:20px;margin-left: 20px;">
+                    <div class="row" >
+                        <div class="col s12" style="margin-top: -9px;display:flex;justify-content:center;align-item:center;">
+                        <span style="margin-right: 27px;margin-top: -11px;"><img src="/static/logo1.png" width="80"></span>
+                        <span style="font-weight: 500;font-size: 26px;margin-top: 7px;">MedAssist Online Prescription</span>
+                        </div>
+                    </div>
+            </div>
+        </div>
+
+        <div id="details"></div>
+        <div id="questions" class="row" style='letter-spacing: 1px;padding-top: 14px;width: 83%;color:black;font-size: 16px;font-weight: 400;padding: 4px;padding-left: 6px;'></div>
+
+        <div class="row" >
+            <div class="col s12">
+            <table class="centered">
+            <thead>
+            <tr>
+
+                <th scope="col">Medicine</th>
+                <th scope="col">Instruction</th>
+                <th scope="col">Frequency</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for row in userprescription %}
+            <tr>
+                <td>{{row.prescription}}</td>
+                <td>{{row.medicine}}</td>
+                <td>{{row.frequency}}</td>
+
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        </div>
+
+    </div>
+</div>
+</div>
+</body>
+<script>
+    $(document).ready(function(){
+        $.getJSON('/userdetails',function(data){
+
+    htm=""
+
+    htm+="<div class='row' style='margin-top:35px;display:flex;'>"
+
+    htm+="<div class='col s6' style='width: 37%;color:black;font-weight: 400;letter-spacing:1px;margin-left: 13px;'>"
+    htm+="<div style='font-size: 18px;margin-bottom: 5px;font-weight: 500'>Patient Details:</div>"
+    htm+="&nbsp;&nbsp;"+data.user.username+"<br>"
+    htm+="&nbsp;&nbsp;"+data.user.useremail+"<br>"
+    htm+="&nbsp;&nbsp;"+data.user.usernum+"<br></div>"
+    htm+="<div class='col s6' id='div2' style='width: 37%;color:black;font-size: 16px;font-weight: 400;padding-left: 159px;letter-spacing: 1px;display:flex;flex-direction:column;'>"
+    htm+="<div style='margin-left: -18px;font-size: 18px;margin-bottom: 5px;font-weight: 500'>Doctor Details:</div>"
+    htm+="ID:&nbsp;&nbsp;"+data.doctor.doctorid+"<br>"
+    htm+="Dr."+data.doctor.doctorname+"<br>"
+    htm+="<div style='font-size: 23px;margin-bottom: -18px;'>"+data.doctor.tspecialization+"</div><br>"
+    htm+=""+data.doctor.mobileno+"<br>"
+    htm+="</div></div>"
+
+
+    $('#details').html(htm)
+
+
+})
+
+
+})
+</script>
+
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+</html>
+
+
+
+
+
+
+
